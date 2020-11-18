@@ -3,6 +3,7 @@ package com.openclassrooms.realestatemanager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -13,6 +14,8 @@ import com.openclassrooms.realestatemanager.ui.real_estate_detail.RealEstateDeta
 import com.openclassrooms.realestatemanager.ui.real_estate_list.RealEstateListFragment
 
 class MainActivity : AppCompatActivity()  {
+
+    var mainFrameLayout : FrameLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,20 +33,25 @@ class MainActivity : AppCompatActivity()  {
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-        if (savedInstanceState == null) {
-            displayedFragment(0)
-        }
+        mainFrameLayout = findViewById(R.id.fragment_container)
 
-        navView.setNavigationItemSelectedListener { menuItem: MenuItem ->
-            if (menuItem.itemId == R.id.nav_real_estate_list) {
+        if (isHandSetLayout()) {
+            if(savedInstanceState == null) {
                 displayedFragment(0)
+                navView.setNavigationItemSelectedListener { menuItem: MenuItem ->
+                    if (menuItem.itemId == R.id.nav_real_estate_list) {
+                        displayedFragment(0)
+                    }
+                    if (menuItem.itemId == R.id.nav_real_estate_map) {
+                        displayedFragment(1)
+                    }
+                    false
+                }
             }
-            if (menuItem.itemId == R.id.nav_real_estate_map) {
-                displayedFragment(1)
-            }
-            false
         }
     }
+
+    private fun isHandSetLayout(): Boolean = mainFrameLayout != null
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
