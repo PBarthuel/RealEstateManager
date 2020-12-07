@@ -1,0 +1,20 @@
+package com.openclassrooms.realestatemanager.ui.real_estate_list
+
+data class RealEstateInfo(var realEstateAdId: Int,
+                          var realEstateType: String?,
+                          var realEstatePrice: Float?,
+                          var realEstateSurface: Float?,
+                          var realEstateDescription: String?,
+                          var interestPoint: String?,
+                          var realEstateStatue: Boolean?,
+                          var realEstateEntryDate: String?,
+                          var realEstateExitDate: String?,
+                          var realEstateAgent: String?,
+                          var realEstateRoad: String?,
+                          var realEstateHouseNumber: Int?,
+                          var realEstateTown: String?,
+                          var realEstatePostalCode: String?,
+                          var realEstateCountry: String?,
+                          var realEstateTotalRoomNumber: Int?,
+                          var realEstateBedroomNumber: Int?,
+                          var realEstateBathroomNumber: Int?)

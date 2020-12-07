@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Photo(
-    @PrimaryKey var photoId: Int =0,
-                 var photoRealEstateAdId: Int =0
+    @PrimaryKey var photoId: Int = 0,
+    var photoRealEstateAdId: Int = 0,
+    var photoReference: String
 )

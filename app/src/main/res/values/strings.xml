@@ -7,10 +7,31 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+
     <string name="menu_real_estate_list">AD LIST</string>
     <string name="menu_real_estate_description">Real estate description</string>
     <string name="menu_real_estate_map">MAP</string>
     <string name="real_estate_search">Search</string>
     <string name="real_estate_modification">Modification</string>
     <string name="real_estate_creation">Creation</string>
+
+
+    <string name="real_estate_type">type</string>
+    <string name="real_estate_price">Price</string>
+    <string name="real_estate_surface">Surface</string>
+    <string name="real_estate_description">Description</string>
+    <string name="real_estate_entry_date">Entry date</string>
+    <string name="real_estate_exit_date">Exit date</string>
+    <string name="real_estate_agent">Agent</string>
+    <string name="real_estate_country">Country</string>
+    <string name="real_estate_road">Road</string>
+    <string name="real_estate_house_number">House number</string>
+    <string name="real_estate_town">Town</string>
+    <string name="real_estate_postal_code">Postal code</string>
+    <string name="real_estate_total_room_number">Total room</string>
+    <string name="real_estate_bedroom_number">Bedroom</string>
+    <string name="real_estate_bathroom_number">Bathroom</string>
+    <string name="submit_btn">Submit Ad</string>
+    <string name="real_estate_photo">Photo</string>
+    <string name="photo_btn">Photo</string>
 </resources>

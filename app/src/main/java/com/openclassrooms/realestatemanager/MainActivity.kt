@@ -1,5 +1,6 @@
 package com.openclassrooms.realestatemanager
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,9 +14,9 @@ import com.google.android.material.navigation.NavigationView
 import com.openclassrooms.realestatemanager.ui.real_estate_detail.RealEstateDetailFragment
 import com.openclassrooms.realestatemanager.ui.real_estate_list.RealEstateListFragment
 
-class MainActivity : AppCompatActivity()  {
+class MainActivity : AppCompatActivity() {
 
-    var mainFrameLayout : FrameLayout? = null
+    var mainFrameLayout: FrameLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity()  {
         mainFrameLayout = findViewById(R.id.fragment_container)
 
         if (isHandSetLayout()) {
-            if(savedInstanceState == null) {
+            if (savedInstanceState == null) {
                 displayedFragment(0)
                 navView.setNavigationItemSelectedListener { menuItem: MenuItem ->
                     if (menuItem.itemId == R.id.nav_real_estate_list) {
@@ -56,18 +57,30 @@ class MainActivity : AppCompatActivity()  {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+
         return true
     }
 
-    private fun displayedFragment(fragmentNumber: Int) {
-        val fragment: Fragment = when (fragmentNumber) {
-            0 -> RealEstateListFragment.newInstance()
-            1 -> RealEstateDetailFragment.newInstance()
-            else -> throw IllegalStateException("Incorrect fragment number : $fragmentNumber")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.menu_activity_creation -> {
+                val intent = Intent(this, CreationActivity::class.java)
+                startActivity(intent)
         }
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commit()
     }
+    return super.onOptionsItemSelected(item)
+}
+
+private fun displayedFragment(fragmentNumber: Int) {
+    val fragment: Fragment = when (fragmentNumber) {
+        0 -> RealEstateListFragment.newInstance()
+        1 -> RealEstateDetailFragment.newInstance()
+        else -> throw IllegalStateException("Incorrect fragment number : $fragmentNumber")
+    }
+    supportFragmentManager
+        .beginTransaction()
+        .replace(R.id.fragment_container, fragment)
+        .commit()
+}
 }

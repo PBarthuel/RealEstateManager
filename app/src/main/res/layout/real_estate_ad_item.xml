@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/real_estate_ad_item_iv_thumbnail"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/real_estate_ad_item_tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginTop="12sp"
+        android:padding="2dp"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/real_estate_ad_item_iv_thumbnail"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="PrivateResource"
+        tools:text="Le Courgette" />
+
+    <TextView
+        android:id="@+id/real_estate_ad_item_tv_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="2dp"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@id/real_estate_ad_item_iv_thumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/real_estate_ad_item_tv_type"
+        tools:ignore="PrivateResource"
+        tools:text="5 Courgette Avenue" />
+
+    <TextView
+        android:id="@+id/real_estate_ad_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColor="#F004B5"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/real_estate_ad_item_iv_thumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/real_estate_ad_item_tv_city"
+        tools:ignore="PrivateResource"
+        tools:text="1 000 000$" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
