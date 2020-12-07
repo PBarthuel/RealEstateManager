@@ -5,16 +5,15 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.openclassrooms.realestatemanager.model.RealEstateAd
-import com.openclassrooms.realestatemanager.model.RealEstateAdWithPhoto
+import com.openclassrooms.realestatemanager.model.RealEstateAdEntity
+import com.openclassrooms.realestatemanager.model.RealEstateAdWithPhotoWrapper
 
 @Dao
-interface RealEstateAdWithPhotoDAO
-{
+interface RealEstateAdWithPhotoDAO {
     @Transaction
-    @Query("SELECT * FROM RealEstateAd")
-    fun getRealEstateAdWithPhoto(): LiveData<List<RealEstateAdWithPhoto>>
+    @Query("SELECT * FROM RealEstateAdEntity")
+    fun getRealEstateAdWithPhoto(): LiveData<List<RealEstateAdWithPhotoWrapper>>
 
     @Insert
-    fun saveRealEstateAd(realEstateAd: RealEstateAd)
+    fun saveRealEstateAd(realEstateAd: RealEstateAdEntity)
 }

@@ -3,13 +3,15 @@ package com.openclassrooms.realestatemanager.ui.real_estate_list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.openclassrooms.realestatemanager.R
+import kotlinx.android.synthetic.main.real_estate_ad_item.view.*
 
-class RealEstateAdAdapter : ListAdapter<RealEstateInfo, RealEstateAdAdapter.ViewHolder>(
-    RealEstateAdDiffCallBack()
+class RealEstateAdAdapter : ListAdapter<RealEstateInfoUiModel, RealEstateAdAdapter.ViewHolder>(
+    RealEstateAdDiffCallBack
 ) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -23,18 +25,17 @@ class RealEstateAdAdapter : ListAdapter<RealEstateInfo, RealEstateAdAdapter.View
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, index: Int) {
-
+        viewHolder.itemView.real_estate_ad_item_tv_city.text = getItem(index).realEstateTown
+        viewHolder.itemView.real_estate_ad_item_tv_city.isVisible = getItem(index).isRealEstateSoldImageVisible
     }
 
 }
 
-class RealEstateAdDiffCallBack : DiffUtil.ItemCallback<RealEstateInfo>() {
+object RealEstateAdDiffCallBack : DiffUtil.ItemCallback<RealEstateInfoUiModel>() {
 
-    override fun areItemsTheSame(oldItem: RealEstateInfo, newItem: RealEstateInfo): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun areItemsTheSame(oldItem: RealEstateInfoUiModel, newItem: RealEstateInfoUiModel) =
+        oldItem.realEstateAdId == newItem.realEstateAdId
 
-    override fun areContentsTheSame(oldItem: RealEstateInfo, newItem: RealEstateInfo): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun areContentsTheSame(oldItem: RealEstateInfoUiModel, newItem: RealEstateInfoUiModel)=
+        oldItem == newItem
 }

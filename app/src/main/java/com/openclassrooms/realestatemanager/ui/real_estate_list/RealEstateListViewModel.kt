@@ -2,16 +2,23 @@ package com.openclassrooms.realestatemanager.ui.real_estate_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.openclassrooms.realestatemanager.model.RealEstateAdWithPhoto
+import com.openclassrooms.realestatemanager.db.RealEstateAdWithPhotoDAO
+import com.openclassrooms.realestatemanager.model.RealEstateAdWithPhotoWrapper
 
-class RealEstateListViewModel : ViewModel() {
+class RealEstateListViewModel(
+    private val realEstateAdWithPhotoDAO: RealEstateAdWithPhotoDAO
+) : ViewModel() {
 
-    private val mediatorRestaurantInfo: MediatorLiveData<List<RealEstateAdWithPhoto>> =
-        MediatorLiveData<List<RealEstateAdWithPhoto>>()
-
-    fun getUiModelsLiveData(): MediatorLiveData<List<RealEstateAdWithPhoto>> {
-        return mediatorRestaurantInfo
+    fun getUiModelsLiveData(): LiveData<List<RealEstateInfoUiModel>> {
+        return Transformations.map(realEstateAdWithPhotoDAO.getRealEstateAdWithPhoto()) { list ->
+            list.mapNotNull { entity ->
+                null /*RealEstateInfoUiModel(
+                    entity.realEstateAd.realEstateAdId,
+                    // TODO Mapping à faire
+                )*/
+            }
+        }
     }
-
 }

@@ -1,13 +1,12 @@
 package com.openclassrooms.realestatemanager
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.openclassrooms.realestatemanager.db.RealEstateAdDB
-import com.openclassrooms.realestatemanager.model.RealEstateAd
+import com.openclassrooms.realestatemanager.model.RealEstateAdEntity
 
 class CreationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,39 +31,38 @@ class CreationActivity : AppCompatActivity() {
         val bathroomNumberEditText: EditText? = findViewById(R.id.bathroom_number_et)
         val photoEditText: Button? = findViewById(R.id.photo_btn)
 
-        var db = Room.databaseBuilder(
+        val db = Room.databaseBuilder(
             applicationContext,
             RealEstateAdDB::class.java,
             "RealEstateAdWithPhoto"
-        )
-            .build()
+        ).build()
 
         submitButton.setOnClickListener {
             //Insert Case
             val thread = Thread {
-
-                var realEstateAd = RealEstateAd()
-                realEstateAd.realEstateAdId = 3
-                realEstateAd.realEstateType = typeEditText?.text.toString()
-                realEstateAd.realEstatePrice = priceEditText?.text?.toString()?.toFloatOrNull()
-                realEstateAd.realEstateSurface = 152.14f
-                realEstateAd.realEstateDescription = descriptionEditText?.text.toString()
-                realEstateAd.interestPoint = "good"
-                realEstateAd.realEstateStatue = true
-                realEstateAd.realEstateEntryDate = entryDateEditText?.text.toString()
-                realEstateAd.realEstateExitDate = exitDateEditText?.text.toString()
-                realEstateAd.realEstateAgent = agentEditText?.text.toString()
-                realEstateAd.realEstateRoad = roadEditText?.text.toString()
-                realEstateAd.realEstateHouseNumber = 2
-                realEstateAd.realEstateTown = townEditText?.text.toString()
-                realEstateAd.realEstatePostalCode = postalCodeEditText?.text.toString()
-                realEstateAd.realEstateCountry = countryEditText?.text.toString()
-                realEstateAd.realEstateTotalRoomNumber = 5
-                realEstateAd.realEstateBedroomNumber = 2
-                realEstateAd.realEstateBathroomNumber = 3
-
-                db.realEstateWithPhotoDao().saveRealEstateAd(realEstateAd)
-
+                db.realEstateWithPhotoDao().saveRealEstateAd(
+                    RealEstateAdEntity(
+                        realEstateAdId = 3,
+                        realEstateType = typeEditText?.text.toString(),
+                        realEstatePrice = priceEditText?.text?.toString()?.toFloatOrNull()
+                            ?: 0f, // TODO A CORRIGER
+                        realEstateSurface = 152.14f,
+                        realEstateDescription = descriptionEditText?.text.toString(),
+                        interestPoint = "good",
+                        realEstateStatue = true,
+                        realEstateEntryDate = entryDateEditText?.text.toString(),
+                        realEstateExitDate = exitDateEditText?.text.toString(),
+                        realEstateAgent = agentEditText?.text.toString(),
+                        realEstateRoad = roadEditText?.text.toString(),
+                        realEstateHouseNumber = 2,
+                        realEstateTown = townEditText?.text.toString(),
+                        realEstatePostalCode = postalCodeEditText?.text.toString(),
+                        realEstateCountry = countryEditText?.text.toString(),
+                        realEstateTotalRoomNumber = 5,
+                        realEstateBedroomNumber = 2,
+                        realEstateBathroomNumber = 3,
+                    )
+                )
             }
             thread.start()
         }
