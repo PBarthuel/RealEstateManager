@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PhotoEntity(
-    @PrimaryKey var photoId: Int = 0,
-    var photoRealEstateAdId: Int = 0,
-    var photoReference: String
+    @PrimaryKey (autoGenerate = true) val photoId: Int = 0,
+    val photoRealEstateAdId: Int = 0,
+    val photoReference: String
 )

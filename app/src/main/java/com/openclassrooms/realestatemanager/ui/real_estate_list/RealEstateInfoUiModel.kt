@@ -7,7 +7,7 @@ data class RealEstateInfoUiModel(
     val realEstateSurface: String,
     val realEstateDescription: String,
     val interestPoint: String,
-    val realEstateStatue: String,
+    val realEstateStatue: Boolean,
     val realEstateEntryDate: String,
     val realEstateExitDate: String,
     val realEstateAgent: String,
@@ -20,5 +20,5 @@ data class RealEstateInfoUiModel(
     val realEstateBedroomNumber: String,
     val realEstateBathroomNumber: String,
     val photoUrl: List<String>,
-    val isRealEstateSoldImageVisible: Boolean
+
 )

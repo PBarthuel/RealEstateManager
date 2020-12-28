@@ -15,6 +15,13 @@ class RealEstateAdAdapter : ListAdapter<RealEstateInfoUiModel, RealEstateAdAdapt
 ) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(realEstateInfoUiModel: RealEstateInfoUiModel) {
+            itemView.real_estate_ad_item_tv_city.text = realEstateInfoUiModel.realEstateTown
+            itemView.real_estate_ad_item_tv_type.text = realEstateInfoUiModel.realEstateType
+            itemView.real_estate_ad_item_tv_price.text = realEstateInfoUiModel.realEstatePrice
+            itemView.real_estate_ad_item_iv_is_sold.isVisible = realEstateInfoUiModel.realEstateStatue
+        }
+
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +32,7 @@ class RealEstateAdAdapter : ListAdapter<RealEstateInfoUiModel, RealEstateAdAdapt
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, index: Int) {
-        viewHolder.itemView.real_estate_ad_item_tv_city.text = getItem(index).realEstateTown
-        viewHolder.itemView.real_estate_ad_item_tv_city.isVisible = getItem(index).isRealEstateSoldImageVisible
+        viewHolder.bind(getItem(index))
     }
 
 }

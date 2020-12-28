@@ -50,7 +50,7 @@
         tools:text="5 Courgette Avenue" />
 
     <TextView
-        android:id="@+id/real_estate_ad_item_price"
+        android:id="@+id/real_estate_ad_item_tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
@@ -62,5 +62,15 @@
         app:layout_constraintTop_toBottomOf="@+id/real_estate_ad_item_tv_city"
         tools:ignore="PrivateResource"
         tools:text="1 000 000$" />
+
+    <ImageView
+        android:id="@+id/real_estate_ad_item_iv_is_sold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/real_estate_ad_item_iv_thumbnail"
+        app:layout_constraintEnd_toEndOf="@id/real_estate_ad_item_iv_thumbnail"
+        android:src="@drawable/sold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

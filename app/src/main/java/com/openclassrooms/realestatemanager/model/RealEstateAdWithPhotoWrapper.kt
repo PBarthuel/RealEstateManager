@@ -9,5 +9,5 @@ data class RealEstateAdWithPhotoWrapper(
         parentColumn = "realEstateAdId",
         entityColumn = "photoRealEstateAdId"
     )
-    val photos: List<PhotoEntity?>
+    val photos: List<PhotoEntity>
 )

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.openclassrooms.realestatemanager.db.RealEstateAdDB
 import com.openclassrooms.realestatemanager.model.RealEstateAdEntity
+import java.util.concurrent.Executors
 
 class CreationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,17 +32,12 @@ class CreationActivity : AppCompatActivity() {
         val bathroomNumberEditText: EditText? = findViewById(R.id.bathroom_number_et)
         val photoEditText: Button? = findViewById(R.id.photo_btn)
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            RealEstateAdDB::class.java,
-            "RealEstateAdWithPhoto"
-        ).build()
+        val realEstateDao = RealEstateAdDB.dbInstance
+
 
         submitButton.setOnClickListener {
             //Insert Case
-            val thread = Thread {
-                db.realEstateWithPhotoDao().saveRealEstateAd(
-                    RealEstateAdEntity(
+                    /*RealEstateAdEntity(
                         realEstateAdId = 3,
                         realEstateType = typeEditText?.text.toString(),
                         realEstatePrice = priceEditText?.text?.toString()?.toFloatOrNull()
@@ -60,11 +56,34 @@ class CreationActivity : AppCompatActivity() {
                         realEstateCountry = countryEditText?.text.toString(),
                         realEstateTotalRoomNumber = 5,
                         realEstateBedroomNumber = 2,
-                        realEstateBathroomNumber = 3,
-                    )
-                )
+                        realEstateBathroomNumber = 3
+                        //photoUrl = listOf("courgette", "carotte")
+                    )*/
+
+            Executors.newSingleThreadExecutor().execute() {
+                realEstateDao.realEstateWithPhotoDao().saveRealEstateAd(RealEstateAdEntity(
+                    realEstateAdId = 5,
+                    realEstateType = typeEditText?.text.toString(),
+                    realEstatePrice = priceEditText?.text?.toString()?.toFloatOrNull()
+                        ?: 0f, // TODO A CORRIGER
+                    realEstateSurface = 152.14f,
+                    realEstateDescription = descriptionEditText?.text.toString(),
+                    interestPoint = "good",
+                    realEstateStatue = true,
+                    realEstateEntryDate = entryDateEditText?.text.toString(),
+                    realEstateExitDate = exitDateEditText?.text.toString(),
+                    realEstateAgent = agentEditText?.text.toString(),
+                    realEstateRoad = roadEditText?.text.toString(),
+                    realEstateHouseNumber = 2,
+                    realEstateTown = townEditText?.text.toString(),
+                    realEstatePostalCode = postalCodeEditText?.text.toString(),
+                    realEstateCountry = countryEditText?.text.toString(),
+                    realEstateTotalRoomNumber = 5,
+                    realEstateBedroomNumber = 2,
+                    realEstateBathroomNumber = 3
+                    //photoUrl = listOf("courgette", "carotte")
+                ))
             }
-            thread.start()
         }
     }
 }
