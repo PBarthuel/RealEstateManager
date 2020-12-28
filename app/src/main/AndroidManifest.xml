@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".CreationActivity">
+            android:name=".ui.creation.CreationActivity">
         </activity>
         <activity android:name=".MapActivity" />
         <activity

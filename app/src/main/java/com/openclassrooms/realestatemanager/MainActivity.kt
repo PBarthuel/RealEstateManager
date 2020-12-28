@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.openclassrooms.realestatemanager.ui.creation.CreationActivity
 import com.openclassrooms.realestatemanager.ui.real_estate_detail.RealEstateDetailFragment
 import com.openclassrooms.realestatemanager.ui.real_estate_list.RealEstateListFragment
 
