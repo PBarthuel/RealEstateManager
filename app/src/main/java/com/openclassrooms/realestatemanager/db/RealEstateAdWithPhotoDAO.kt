@@ -12,7 +12,7 @@ interface RealEstateAdWithPhotoDAO {
     fun getRealEstateAdWithPhoto(): LiveData<List<RealEstateAdWithPhotoWrapper>>
 
     @Insert
-    suspend fun saveRealEstateAd(realEstateAd: RealEstateAdEntity) : Long
+    fun saveRealEstateAd(realEstateAd: RealEstateAdEntity) : Long // SHOULD BE A SUSPEND FUNCTION
 
     @Update
     fun updateRealEstateAd(realEstateAd: RealEstateAdEntity)

@@ -21,7 +21,7 @@ class RealEstateListViewModel(
                     entity.realEstateAd.realEstateSurface.toString(),
                     entity.realEstateAd.realEstateDescription,
                     entity.realEstateAd.interestPoint,
-                    entity.realEstateAd.realEstateStatue,
+                    entity.realEstateAd.realEstateIsSold,
                     entity.realEstateAd.realEstateEntryDate,
                     entity.realEstateAd.realEstateExitDate,
                     entity.realEstateAd.realEstateAgent,

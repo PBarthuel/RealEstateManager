@@ -1,12 +1,11 @@
 package com.openclassrooms.realestatemanager.model
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
 data class RealEstateAdEntity(
-    @PrimaryKey (autoGenerate = true) val realEstateAdId: Int = 0,
+    @PrimaryKey(autoGenerate = true) val realEstateAdId: Int = 0,
     val realEstateType: String,
     val realEstatePrice: Float,
     val realEstateSurface: Float,

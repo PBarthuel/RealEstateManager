@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.injections.ViewModelFactory
+import com.openclassrooms.realestatemanager.ui.real_estate_creation.RealEstateCreationViewModel.RealEstateCreationViewInfo
 
 class RealEstateCreationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,43 +17,45 @@ class RealEstateCreationActivity : AppCompatActivity() {
         val viewModel =
             ViewModelProvider(this, ViewModelFactory).get(RealEstateCreationViewModel::class.java)
 
-        val submitButton: Button = findViewById(R.id.submit_btn)
-        val typeEditText: EditText? = findViewById(R.id.type_et)
-        val priceEditText: EditText? = findViewById(R.id.price_et)
-        val surfaceEditText: EditText? = findViewById(R.id.surface_et)
-        val descriptionEditText: EditText? = findViewById(R.id.description_et)
-        val entryDateEditText: EditText? = findViewById(R.id.entry_date_et)
-        val exitDateEditText: EditText? = findViewById(R.id.exit_date_et)
-        val agentEditText: EditText? = findViewById(R.id.agent_et)
-        val countryEditText: EditText? = findViewById(R.id.country_et)
-        val roadEditText: EditText? = findViewById(R.id.road_et)
-        val houseNumberEditText: EditText? = findViewById(R.id.house_number_et)
-        val townEditText: EditText? = findViewById(R.id.town_et)
-        val postalCodeEditText: EditText? = findViewById(R.id.postal_code_et)
-        val totalRoomNumberEditText: EditText? = findViewById(R.id.total_room_number_et)
-        val bedroomNumberEditText: EditText? = findViewById(R.id.bedroom_number_et)
-        val bathroomNumberEditText: EditText? = findViewById(R.id.bathroom_number_et)
-        val photoEditText: Button? = findViewById(R.id.photo_btn)
+        val submitButton = findViewById<Button>(R.id.submit_btn)
+        val typeEditText = findViewById<EditText>(R.id.type_et)
+        val priceEditText = findViewById<EditText>(R.id.price_et)
+        val surfaceEditText = findViewById<EditText>(R.id.surface_et)
+        val descriptionEditText = findViewById<EditText>(R.id.description_et)
+        val entryDateEditText = findViewById<EditText>(R.id.entry_date_et)
+        val exitDateEditText = findViewById<EditText>(R.id.exit_date_et)
+        val agentEditText = findViewById<EditText>(R.id.agent_et)
+        val countryEditText = findViewById<EditText>(R.id.country_et)
+        val roadEditText = findViewById<EditText>(R.id.road_et)
+        val houseNumberEditText = findViewById<EditText>(R.id.house_number_et)
+        val townEditText = findViewById<EditText>(R.id.town_et)
+        val postalCodeEditText = findViewById<EditText>(R.id.postal_code_et)
+        val totalRoomNumberEditText = findViewById<EditText>(R.id.total_room_number_et)
+        val bedroomNumberEditText = findViewById<EditText>(R.id.bedroom_number_et)
+        val bathroomNumberEditText = findViewById<EditText>(R.id.bathroom_number_et)
+        val photoEditText = findViewById<Button>(R.id.photo_btn)
 
         submitButton.setOnClickListener {
             viewModel.createRealEstate(
-                realEstateType = typeEditText?.text?.toString(),
-                realEstatePrice = priceEditText?.text?.toString(), // TODO A CORRIGER
-                realEstateSurface = "152.14",
-                realEstateDescription = descriptionEditText?.text?.toString(),
-                interestPoint = "good",
-                realEstateIsSold = false,
-                realEstateEntryDate = entryDateEditText?.text?.toString(),
-                realEstateExitDate = exitDateEditText?.text?.toString(),
-                realEstateAgent = agentEditText?.text?.toString(),
-                realEstateRoad = roadEditText?.text?.toString(),
-                realEstateHouseNumber = "2",
-                realEstateTown = townEditText?.text?.toString(),
-                realEstatePostalCode = postalCodeEditText?.text?.toString(),
-                realEstateCountry = countryEditText?.text?.toString(),
-                realEstateTotalRoomNumber = "5",
-                realEstateBedroomNumber = "2",
-                realEstateBathroomNumber = "3"
+                RealEstateCreationViewInfo(
+                    realEstateType = typeEditText.text?.toString(),
+                    realEstatePrice = priceEditText.text?.toString(), // TODO A CORRIGER
+                    realEstateSurface = "152.14",
+                    realEstateDescription = descriptionEditText.text?.toString(),
+                    interestPoint = "good",
+                    realEstateIsSold = false,
+                    realEstateEntryDate = entryDateEditText.text?.toString(),
+                    realEstateExitDate = exitDateEditText.text?.toString(),
+                    realEstateAgent = agentEditText.text?.toString(),
+                    realEstateRoad = roadEditText.text?.toString(),
+                    realEstateHouseNumber = "2",
+                    realEstateTown = townEditText.text?.toString(),
+                    realEstatePostalCode = postalCodeEditText.text?.toString(),
+                    realEstateCountry = countryEditText.text?.toString(),
+                    realEstateTotalRoomNumber = "5",
+                    realEstateBedroomNumber = "2",
+                    realEstateBathroomNumber = "3"
+                )
             )
         }
 
