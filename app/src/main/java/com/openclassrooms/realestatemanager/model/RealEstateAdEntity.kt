@@ -12,7 +12,7 @@ data class RealEstateAdEntity(
     val realEstateSurface: Float,
     val realEstateDescription: String,
     val interestPoint: String,
-    val realEstateStatue: Boolean,
+    val realEstateIsSold: Boolean,
     val realEstateEntryDate: String,
     val realEstateExitDate: String,
     val realEstateAgent: String,

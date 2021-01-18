@@ -5,17 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.real_estate_list.RealEstateListFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/real_estate_ad_recycler_view"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
-        android:alpha="0.25" />
-
-    <TextView
-        android:id="@+id/real_estate_list_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="list" />
+        android:layout_width="wrap_content"
+        />
 
 </FrameLayout>

@@ -34,4 +34,5 @@
     <string name="submit_btn">Submit Ad</string>
     <string name="real_estate_photo">Photo</string>
     <string name="photo_btn">Photo</string>
+    <string name="error_incorrect_price">Price is incorrect</string>
 </resources>

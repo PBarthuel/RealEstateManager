@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.ui.creation
+package com.openclassrooms.realestatemanager.ui.real_estate_creation
 
 import android.os.Bundle
 import android.widget.Button
@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.injections.ViewModelFactory
-import com.openclassrooms.realestatemanager.model.RealEstateAdEntity
 
-class CreationActivity : AppCompatActivity() {
+class RealEstateCreationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.creation_real_estate_ad)
@@ -37,30 +36,27 @@ class CreationActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             viewModel.createRealEstate(
-                RealEstateAdEntity(
-                    realEstateType = typeEditText?.text.toString(),
-                    realEstatePrice = priceEditText?.text?.toString()?.toFloatOrNull()
-                        ?: 0f, // TODO A CORRIGER
-                    realEstateSurface = 152.14f,
-                    realEstateDescription = descriptionEditText?.text.toString(),
-                    interestPoint = "good",
-                    realEstateStatue = true,
-                    realEstateEntryDate = entryDateEditText?.text.toString(),
-                    realEstateExitDate = exitDateEditText?.text.toString(),
-                    realEstateAgent = agentEditText?.text.toString(),
-                    realEstateRoad = roadEditText?.text.toString(),
-                    realEstateHouseNumber = 2,
-                    realEstateTown = townEditText?.text.toString(),
-                    realEstatePostalCode = postalCodeEditText?.text.toString(),
-                    realEstateCountry = countryEditText?.text.toString(),
-                    realEstateTotalRoomNumber = 5,
-                    realEstateBedroomNumber = 2,
-                    realEstateBathroomNumber = 3
-                )
+                realEstateType = typeEditText?.text?.toString(),
+                realEstatePrice = priceEditText?.text?.toString(), // TODO A CORRIGER
+                realEstateSurface = "152.14",
+                realEstateDescription = descriptionEditText?.text?.toString(),
+                interestPoint = "good",
+                realEstateIsSold = false,
+                realEstateEntryDate = entryDateEditText?.text?.toString(),
+                realEstateExitDate = exitDateEditText?.text?.toString(),
+                realEstateAgent = agentEditText?.text?.toString(),
+                realEstateRoad = roadEditText?.text?.toString(),
+                realEstateHouseNumber = "2",
+                realEstateTown = townEditText?.text?.toString(),
+                realEstatePostalCode = postalCodeEditText?.text?.toString(),
+                realEstateCountry = countryEditText?.text?.toString(),
+                realEstateTotalRoomNumber = "5",
+                realEstateBedroomNumber = "2",
+                realEstateBathroomNumber = "3"
             )
         }
 
-        viewModel.liveDataCloseActivity.observe(this ) {
+        viewModel.liveDataViewAction.observe(this) {
             finish()
         }
     }

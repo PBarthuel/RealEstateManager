@@ -34,32 +34,40 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+
+    // Kotlin - Android
+    implementation "androidx.core:core-ktx:1.5.0-alpha05"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation 'androidx.room:room-runtime:2.2.5'
-    implementation 'androidx.room:room-ktx:2.2.5'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    // Android
+    implementation "androidx.appcompat:appcompat:1.3.0-alpha02"
+    implementation "com.google.android.material:material:1.3.0-beta01"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
 
-    implementation "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:2.2.5"
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:2.2.5"
+    // ?
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Room
+    implementation "androidx.room:room-runtime:2.2.6"
+    kapt "androidx.room:room-compiler:2.2.6"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.2.6"
     // optional - Test helpers
-    testImplementation "androidx.room:room-testing:2.2.5"
+    testImplementation "androidx.room:room-testing:2.2.6"
+
+    // Unit tests
+    testImplementation "junit:junit:4.13.1" // Assertions... and stuff
+    testImplementation "org.mockito:mockito-core:3.3.3" // @Mock and @Spy... and stuff
+    testImplementation "android.arch.core:core-testing:1.1.1" // LiveData tools for Unit Testing
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2' // Coroutine tools for Unit Testing
+
+    // Android tests
+    androidTestImplementation "androidx.test:runner:1.3.1-alpha02"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0-alpha02"
 }
